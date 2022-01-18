@@ -5,7 +5,7 @@
 2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
 false - выводит в консоль главный объект программы
 
-3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос
 "Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
 genres
 
@@ -18,7 +18,7 @@ let numderOfFilms;
 
 function start() {
     numderOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?', '');
-    
+
     while (numderOfFilms == '' || numderOfFilms == null || isNaN(numderOfFilms)) {
         numderOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?', '');
     }
@@ -42,15 +42,15 @@ function rememberMyFilms () {
     for (let i = 0; i < 2; i++) {
         const a = prompt('Один из последних просмотренных фильмов', ''),
               b = prompt('На сколько оцените его', '');
-    
-        
+
+
         if (a != null && b != null && a != '' && b != '' && a.length < 50) {
             personalMovieDB.movies[a] = b;
             console.log('done');
         } else {
             console.log('error');
             i--;
-        }    
+        }
     }
 }
 
@@ -70,6 +70,21 @@ function detectPersonalLevel() {
 
 detectPersonalLevel();
 
-    
 
-console.log(personalMovieDB);
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
+
+
+function writeYourGenres () {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+
+}
+
+writeYourGenres();
